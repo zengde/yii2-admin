@@ -1,0 +1,69 @@
+#!/usr/bin/env php
+<?php
+
+
+$root = str_replace('\\', '/', __DIR__);
+
+
+echo "Yii Application Initialization Tool v1.0\n\n";
+echo "Please input database type,if is mysql,press enter key to skip  ";
+$type = trim(fgets(STDIN));
+if(empty($type)){
+	$type='mysql';
+}
+echo "Please input database host,if is 127.0.0.1,press enter key to skip  ";
+$host = trim(fgets(STDIN));
+if(empty($host)){
+	$host='127.0.0.1';
+}
+echo "Please input database port,if is 3306,press enter key to skip  ";
+$port = trim(fgets(STDIN));
+if(empty($port)){
+	$port='3306';
+}
+echo "Please input database name  ";
+$dbname = trim(fgets(STDIN));
+if(empty($dbname)){
+	echo "\n  Quit initialization without database name.  ";
+    exit(0);
+}
+echo "Please input database username  ";
+$username = trim(fgets(STDIN));
+if(empty($username)){
+	echo "\n  Quit initialization without database username.  ";
+    exit(0);
+}
+echo "Please input database password  ";
+$password = trim(fgets(STDIN));
+if(empty($password)){
+	$password='';
+}
+echo "Please input database charset,if is utf8,press enter key to skip  ";
+$charset = trim(fgets(STDIN));
+if(empty($charset)){
+	$charset='utf8';
+}
+echo "Please input database prefix  ";
+$prefix = trim(fgets(STDIN));
+if(empty($prefix)){
+	$prefix='';
+}
+
+$config=[
+	'components' => [
+        'db' => [
+            'class' => 'yii/db/Connection',
+            'dsn' => "$type:$host:$port;dbname=$dbname",
+            'username' => $username,
+            'password' => $password,
+            'charset' => $charset,
+            'tablePrefix'=>$prefix,
+        ],
+    ],
+];
+$config=var_export($config,true);
+$config=str_replace('/', '\\', $config);
+$str='<?php'."\r\nreturn ".$config.";";
+file_put_contents($root . '/common/config/main-local.php', $str);
+
+echo "   install success\n";

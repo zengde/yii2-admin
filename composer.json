@@ -1,0 +1,39 @@
+{
+    "name": "zengde/yii2-admin",
+    "description": "Yii 2 Admin Project Template",
+    "keywords": ["yii2", "framework", "advanced", "project template"],
+    "homepage": "https://github.com/zengde/yii2-admin/",
+    "type": "project",
+    "license": "BSD-3-Clause",
+    "support": {
+        "issues": "https://github.com/zengde/yii2-admin/issues?state=open",
+        "wiki": "https://github.com/zengde/yii2-admin/wiki/",
+        "source": "https://github.com/zengde/yii2-admin"
+    },
+    "minimum-stability": "stable",
+    "require": {
+        "php": ">=5.5",
+        "yiisoft/yii2": "~2.0.14",
+        "yiisoft/yii2-bootstrap": "~2.0.0"
+    },
+    "require-dev": {
+        "yiisoft/yii2-debug": "~2.0.0",
+        "yiisoft/yii2-gii": "~2.0.0",
+        "yiisoft/yii2-faker": "~2.0.0",
+        "codeception/base": "^2.4.0",
+        "phpunit/phpunit": "~6.5.5",
+        "codeception/verify": "~1.0.0"
+    },
+    "config": {
+        "process-timeout": 1800,
+		"fxp-asset": {
+            "enabled": false
+        }
+    },
+	"repositories": [
+        {
+            "type": "composer",
+            "url": "https://asset-packagist.org"
+        }
+    ]
+}
